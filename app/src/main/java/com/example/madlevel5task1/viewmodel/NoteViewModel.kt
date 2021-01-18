@@ -17,7 +17,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     private val mainScope = CoroutineScope(Dispatchers.Main)
 
     val error = MutableLiveData<String>()
-    val succes = MutableLiveData<Boolean>()
+    val success = MutableLiveData<Boolean>()
     val note = noteRepository.getNotepad()
 
     fun updateNote(title: String, text: String){
