@@ -37,6 +37,10 @@ class AddNoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnSave.setOnClickListener {
+            saveNote()
+        }
+        observeNote()
     }
 
     private fun observeNote() {
