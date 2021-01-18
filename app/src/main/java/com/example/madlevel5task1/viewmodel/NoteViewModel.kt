@@ -34,7 +34,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
                 withContext(Dispatchers.IO) {
                     noteRepository.updateNotepad(newNote)
                 }
-                succes.value = true
+                success.value = true
             }
         }
     }
