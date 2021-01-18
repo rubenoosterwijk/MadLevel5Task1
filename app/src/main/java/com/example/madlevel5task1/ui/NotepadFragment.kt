@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.madlevel5task1.R
+import com.example.madlevel5task1.databinding.FragmentNotepadBinding
 import com.example.madlevel5task1.viewmodel.NoteViewModel
 
 
@@ -17,6 +18,10 @@ import com.example.madlevel5task1.viewmodel.NoteViewModel
  * create an instance of this fragment.
  */
 class NotepadFragment : Fragment() {
+
+
+    private var _binding: FragmentNotepadBinding? = null
+    private val binding get() = _binding!!
 
 
     // TODO: Rename and change types of parameters
@@ -33,15 +38,16 @@ class NotepadFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notepad, container, false)
+        _binding = FragmentNotepadBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     private fun observeAddNoteResult() {
         viewModel.note.observe(viewLifecycleOwner, Observer{ note ->
             note?.let {
-                tvNoteTitle.text = it.title
-                tvLastUpdated.text = getString(R.string.last_updated, it.lastUpdated.toString())
-                tvNoteText.text = it.text
+                binding.tvNoteTitle.text = it.title
+                binding.tvLastUpdated.text = getString(R.string.last_updated, it.lastUpdated.toString())
+                binding.tvNoteText.text = it.text
             }
         })
     }
